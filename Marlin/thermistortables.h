@@ -693,6 +693,77 @@ const short temptable_20[][2] PROGMEM = {
 };
 #endif
 
+/* MAKESPACE */
+#if (THERMISTORHEATER_0 == 42) || (THERMISTORHEATER_1 == 42) || (THERMISTORHEATER_2 == 42) || (THERMISTORBED == 42) // Up! thermistor
+/* high sample value for a high temperature.
+This does not match the normal thermistor behaviour so we need to set the following defines */
+
+/* EQN: (1023 / 5) * (0.0111621*t - 0.027499) */
+/* Raw data (therm1)
+  Temp		Volts
+  25.6		0.26
+  50		0.532
+  80		0.856
+  104		1.14
+  153		1.68
+*/
+#if (THERMISTORHEATER_0 == 42)
+# define HEATER_0_RAW_HI_TEMP 16383
+# define HEATER_0_RAW_LO_TEMP 0
+#endif
+#if (THERMISTORHEATER_1 == 42)
+# define HEATER_1_RAW_HI_TEMP 16383
+# define HEATER_1_RAW_LO_TEMP 0
+#endif
+#if (THERMISTORHEATER_2 == 42)
+# define HEATER_2_RAW_HI_TEMP 16383
+# define HEATER_2_RAW_LO_TEMP 0
+#endif
+#if (THERMISTORBED == 42)
+# define HEATER_BED_RAW_HI_TEMP 16383
+# define HEATER_BED_RAW_LO_TEMP 0
+#endif
+const short temptable_42[][2] PROGMEM = {
+{         0*OVERSAMPLENR ,       0     },
+{       17*OVERSAMPLENR ,       10     },
+{       40*OVERSAMPLENR ,       20     },
+{       63*OVERSAMPLENR ,       30     },
+{       86*OVERSAMPLENR ,       40     },
+{       109*OVERSAMPLENR ,       50     },
+{       131*OVERSAMPLENR ,       60     },
+{       154*OVERSAMPLENR ,       70     },
+{       177*OVERSAMPLENR ,       80     },
+{       200*OVERSAMPLENR ,       90     },
+{       223*OVERSAMPLENR ,       100     },
+{       246*OVERSAMPLENR ,       110     },
+{       268*OVERSAMPLENR ,       120     },
+{       291*OVERSAMPLENR ,       130     },
+{       314*OVERSAMPLENR ,       140     },
+{       337*OVERSAMPLENR ,       150     },
+{       360*OVERSAMPLENR ,       160     },
+{       383*OVERSAMPLENR ,       170     },
+{       405*OVERSAMPLENR ,       180     },
+{       428*OVERSAMPLENR ,       190     },
+{       451*OVERSAMPLENR ,       200     },
+{       474*OVERSAMPLENR ,       210     },
+{       497*OVERSAMPLENR ,       220     },
+{       520*OVERSAMPLENR ,       230     },
+{       542*OVERSAMPLENR ,       240     },
+{       565*OVERSAMPLENR ,       250     },
+{       588*OVERSAMPLENR ,       260     },
+{       611*OVERSAMPLENR ,       270     },
+{       634*OVERSAMPLENR ,       280     },
+{       657*OVERSAMPLENR ,       290     },
+{       680*OVERSAMPLENR ,       300     },
+{       702*OVERSAMPLENR ,       310     },
+{       725*OVERSAMPLENR ,       320     },
+{       748*OVERSAMPLENR ,       330     },
+{       771*OVERSAMPLENR ,       340     },
+{       794*OVERSAMPLENR ,       350     },
+{       818*OVERSAMPLENR ,       1100     }
+};
+#endif
+
 #if (THERMISTORHEATER_0 == 51) || (THERMISTORHEATER_1 == 51) || (THERMISTORHEATER_2 == 51) || (THERMISTORBED == 51)
 // 100k EPCOS (WITH 1kohm RESISTOR FOR PULLUP, R9 ON SANGUINOLOLU! NOT FOR 4.7kohm PULLUP! THIS IS NOT NORMAL!)
 // Verified by linagee.
